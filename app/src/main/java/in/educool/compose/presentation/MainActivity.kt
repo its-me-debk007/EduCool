@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
-import `in`.educool.compose.presentation.screen.auth.VerifyOtp
+import `in`.educool.compose.presentation.screen.auth.ForgotPassword
 import `in`.educool.compose.ui.theme.EducoolComposeTheme
 
 @AndroidEntryPoint
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    VerifyOtp()
+                    ForgotPassword()
                 }
             }
         }
