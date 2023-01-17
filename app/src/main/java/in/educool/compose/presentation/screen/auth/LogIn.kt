@@ -18,7 +18,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -166,43 +165,11 @@ private fun HeadingAndButtons(
             )
         }
 
-        LowerPart("Sign In using Google")
+        LowerLogInPart("Sign In using Google")
 
     }
 
 }
-
-@Composable
-fun LowerPart(oauthLabel: String) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        OrLabel()
-
-        GoogleOAuth(text = oauthLabel, modifier = Modifier.align(CenterHorizontally)) {}
-
-        Text(
-            buildAnnotatedString {
-                withStyle(SpanStyle(fontFamily = ReemKufi, fontSize = 18.sp)) {
-                    withStyle(SpanStyle(color = Color.Black)) {
-                        append("Don’t have an account? ")
-                    }
-                    withStyle(
-                        SpanStyle(
-                            textDecoration = TextDecoration.Underline,
-                            color = LightBlue
-                        )
-                    ) {
-                        append("Sign Up")
-                    }
-                }
-            },
-            modifier = Modifier
-                .align(CenterHorizontally)
-                .padding(top = 8.dp)
-                .clickable { }
-        )
-    }
-}
-
 
 @Composable
 fun GoogleOAuth(text: String, modifier: Modifier, onClick: () -> Unit) {

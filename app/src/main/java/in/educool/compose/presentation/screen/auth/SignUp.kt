@@ -3,7 +3,6 @@ package `in`.educool.compose.presentation.screen.auth
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -13,19 +12,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import `in`.educool.compose.R
 import `in`.educool.compose.ui.theme.*
 
-@Preview(showBackground = true)
 @Composable
 fun SignUp() {
     var email by remember { mutableStateOf("") }
@@ -104,22 +96,7 @@ private fun HeadingAndButtons(
 
         Spacer(modifier = Modifier.height(18.dp))
 
-        OutlinedTextField(
-            value = email,
-            onValueChange = onEmailChange,
-            singleLine = true,
-            label = {
-                Text(
-                    text = "Enter your email",
-                    style = TextFieldLabel,
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Next
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        EmailField(email = email, onEmailChange = onEmailChange, labelText = "Enter your email")
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -139,51 +116,10 @@ private fun HeadingAndButtons(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-            Text(
-                text = "Sign Up",
-                fontFamily = ReemKufi,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center,
-            )
-        }
+        AuthButton("Sign Up") {}
 
-        LowerPart("Sign Up using Google")
+        LowerLogInPart("Sign Up using Google")
 
     }
 
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PasswordField(password: String, onPasswordChange: (String) -> Unit, labelText: String) {
-    var hidePassword by remember { mutableStateOf(true) }
-
-    OutlinedTextField(
-        value = password,
-        singleLine = true,
-        onValueChange = onPasswordChange,
-        label = {
-            Text(
-                text = labelText,
-                style = TextFieldLabel,
-            )
-        },
-        trailingIcon = {
-            val icon =
-                if (hidePassword) R.drawable.ic_visibility_off else R.drawable.ic_visibility
-
-            val description = if (hidePassword) "Show password" else "Hide password"
-
-            IconButton(onClick = { hidePassword = !hidePassword }) {
-                Icon(painter = painterResource(icon), contentDescription = description)
-            }
-        },
-        visualTransformation = if (hidePassword) PasswordVisualTransformation() else VisualTransformation.None,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password,
-            imeAction = if (labelText == "Enter Your Password") ImeAction.Next else ImeAction.Go
-        ),
-        modifier = Modifier.fillMaxWidth()
-    )
 }
