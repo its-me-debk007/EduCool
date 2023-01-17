@@ -15,4 +15,6 @@ interface AuthRepository {
     suspend fun sendOtp(email: String): MessageDTO
 
     suspend fun generateTokens(email: String, password: String): TokenDTO
+
+    suspend fun generateAccessToken(refresh: String): TokenDTO
 }

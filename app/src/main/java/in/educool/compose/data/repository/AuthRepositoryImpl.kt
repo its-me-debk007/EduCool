@@ -18,4 +18,6 @@ class AuthRepositoryImpl @Inject constructor(private val apiService: ApiService)
     override suspend fun sendOtp(email: String): MessageDTO = apiService.sendOtp(email)
 
     override suspend fun generateTokens(email: String, password: String): TokenDTO = apiService.generateTokens(email, password)
+
+    override suspend fun generateAccessToken(refresh: String): TokenDTO = apiService.generateAccessToken(refresh)
 }
