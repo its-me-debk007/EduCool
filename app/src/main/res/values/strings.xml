@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Educool Compose</string>
+    <string name="app_name">EduCool</string>
+    <string name="landing_screen_text">“Think out of the box and create a learning experience where the learner can interact with the content and their brains.”</string>
 </resources>
