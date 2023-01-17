@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -23,13 +24,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import `in`.educool.compose.R
-import `in`.educool.compose.ui.theme.LightBlue
-import `in`.educool.compose.ui.theme.ReemKufi
-import `in`.educool.compose.ui.theme.TextFieldLabel
+import `in`.educool.compose.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailField(email: String, onEmailChange: (String) -> Unit, labelText: String) {
+fun EmailField(email: String, onEmailChange: (String) -> Unit, labelText: String, imeAction: ImeAction = ImeAction.Next) {
     OutlinedTextField(
         value = email,
         onValueChange = onEmailChange,
@@ -42,7 +41,7 @@ fun EmailField(email: String, onEmailChange: (String) -> Unit, labelText: String
         },
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Next
+            imeAction = imeAction
         ),
         modifier = Modifier.fillMaxWidth()
     )
@@ -123,4 +122,16 @@ fun AuthButton(text: String, onClick: () -> Unit) {
             textAlign = TextAlign.Center,
         )
     }
+}
+
+@Composable
+fun AuthHeading(heading: String) {
+    Text(
+        text = heading,
+        fontFamily = Rosario,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        textAlign = TextAlign.Center,
+        color = Blue
+    )
 }

@@ -1,12 +1,9 @@
 package `in`.educool.compose.presentation.screen.auth
 
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,16 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import `in`.educool.compose.R
-import `in`.educool.compose.presentation.viewmodel.auth.VerifyOtpViewModel
-import `in`.educool.compose.ui.theme.Blue
 
-@Preview(showBackground = true)
 @Composable
-fun VerifyOtp(viewModel: VerifyOtpViewModel = hiltViewModel()) {
+fun ForgotPassword() {
     var email by rememberSaveable { mutableStateOf("") }
     val scrollState = rememberScrollState()
 
@@ -48,7 +40,7 @@ fun VerifyOtp(viewModel: VerifyOtpViewModel = hiltViewModel()) {
                 .offset(y = (-148).dp)
         ) {
 
-            AuthHeading(heading = "Enter your OTP")
+            AuthHeading(heading = "Enter Your Email Id")
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -64,14 +56,6 @@ fun VerifyOtp(viewModel: VerifyOtpViewModel = hiltViewModel()) {
             AuthButton(text = "Verify") {}
 
             Spacer(modifier = Modifier.height(24.dp))
-
-            Text(
-                text = "Resend OTP" + if (viewModel.timer.value != 0) " after ${viewModel.timer.value} sec(s)" else "",
-                color = Blue,
-                modifier = Modifier.clickable {
-                    Log.d("TIMER", viewModel.timer.value.toString())
-                    if (viewModel.timer.value == 0) viewModel.startTimer()
-                })
         }
     }
 }
