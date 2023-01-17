@@ -1,5 +1,6 @@
-package `in`.educool.compose.presentation.screen.auth
+package `in`.educool.compose.presentation
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
@@ -14,10 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import `in`.educool.compose.R
-import `in`.educool.compose.ui.theme.Gray
-import `in`.educool.compose.ui.theme.ReemKufi
-import `in`.educool.compose.ui.theme.Roboto
-import `in`.educool.compose.ui.theme.RubikMonoOne
+import `in`.educool.compose.ui.theme.*
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -34,7 +32,7 @@ fun LandingPage() {
 }
 
 @Composable
-fun HeadingAndButtons(modifier: Modifier = Modifier) {
+private fun HeadingAndButtons(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(horizontal = 24.dp)) {
         Text(
             text = stringResource(id = R.string.app_name),
@@ -65,7 +63,8 @@ fun HeadingAndButtons(modifier: Modifier = Modifier) {
 
         OutlinedButton(
             onClick = { /*TODO*/ },
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = 16.dp),
+            border = BorderStroke(1.dp, Blue)
         ) {
             Text(
                 text = "Log In",

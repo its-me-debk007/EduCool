@@ -13,11 +13,18 @@ val RubikMonoOne = FontFamily(
 )
 
 val Roboto = FontFamily(
-    Font(R.font.roboto_regular)
+    Font(R.font.roboto_regular),
+    Font(R.font.roboto_medium, weight = FontWeight.Medium)
 )
 
 val ReemKufi = FontFamily(
     Font(R.font.reem_kufi_regular)
+)
+
+val TextFieldLabel = TextStyle(
+    fontFamily = ReemKufi,
+    color = GrayBlue,
+    fontSize = 16.sp
 )
 
 // Set of Material typography styles to start with
