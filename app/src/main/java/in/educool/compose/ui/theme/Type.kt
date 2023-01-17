@@ -21,6 +21,10 @@ val ReemKufi = FontFamily(
     Font(R.font.reem_kufi_regular)
 )
 
+val Rosario = FontFamily(
+    Font(R.font.rosario_bold, weight = FontWeight.Bold)
+)
+
 val TextFieldLabel = TextStyle(
     fontFamily = ReemKufi,
     color = GrayBlue,

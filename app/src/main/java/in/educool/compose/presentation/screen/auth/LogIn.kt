@@ -20,13 +20,11 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import `in`.educool.compose.R
 import `in`.educool.compose.ui.theme.*
 
-@Preview(showBackground = true)
 @Composable
 fun Login() {
     var email by remember { mutableStateOf("") }
@@ -49,14 +47,14 @@ fun Login() {
             onEmailChange = { email = it },
             password = password,
             onPasswordChange = { password = it },
-            modifier = Modifier.offset(y = (-120).dp)
+            modifier = Modifier.offset(y = (-148).dp)
         )
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HeadingAndButtons(
+private fun HeadingAndButtons(
     email: String,
     onEmailChange: (String) -> Unit,
     password: String,
@@ -72,18 +70,26 @@ fun HeadingAndButtons(
     ) {
         Text(
             buildAnnotatedString {
-                withStyle(SpanStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold)) {
-                    append("    Log In\n")
-                }
+                withStyle(SpanStyle(fontFamily = Rosario, fontWeight = FontWeight.Bold)) {
+                    withStyle(
+                        SpanStyle(
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Blue
+                        )
+                    ) {
+                        append("    Log In\n")
+                    }
 
-                withStyle(
-                    SpanStyle(
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Yellow
-                    )
-                ) {
-                    append("Welcome Back")
+                    withStyle(
+                        SpanStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Yellow
+                        )
+                    ) {
+                        append("Welcome Back")
+                    }
                 }
             },
             lineHeight = 36.sp,
@@ -160,9 +166,18 @@ fun HeadingAndButtons(
             )
         }
 
+        LowerPart("Sign In using Google")
+
+    }
+
+}
+
+@Composable
+fun LowerPart(oauthLabel: String) {
+    Column(modifier = Modifier.fillMaxWidth()) {
         OrLabel()
 
-        SignInWithGoogle(modifier = Modifier.align(CenterHorizontally)) {}
+        GoogleOAuth(text = oauthLabel, modifier = Modifier.align(CenterHorizontally)) {}
 
         Text(
             buildAnnotatedString {
@@ -183,20 +198,21 @@ fun HeadingAndButtons(
             modifier = Modifier
                 .align(CenterHorizontally)
                 .padding(top = 8.dp)
+                .clickable { }
         )
     }
-
 }
 
+
 @Composable
-fun SignInWithGoogle(modifier: Modifier, onClick: () -> Unit) {
+fun GoogleOAuth(text: String, modifier: Modifier, onClick: () -> Unit) {
     Row(modifier = modifier.clickable { onClick() }) {
         Image(painter = painterResource(id = R.drawable.ic_google), contentDescription = null)
 
         Spacer(modifier = Modifier.width(10.dp))
 
         Text(
-            text = "Sign In using Google",
+            text = text,
             fontFamily = Roboto,
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
